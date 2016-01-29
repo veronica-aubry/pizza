@@ -3,6 +3,9 @@ var toppingsOptions = ["pepperoni", "anchovies", "pineapple"];
 
 var total = 0;
 
+
+//literal objects: pizza size and toppings//
+
 var small = {
   price: 9.99,
 }
@@ -30,12 +33,22 @@ var pineapple = {
   price: .25,
 }
 
+var olives = {
+  name: "olives",
+  price: .25,
+}
+
+//Pizza constructor//
+
 function Pizza(pizzaSize, toppings, priceArray, sum){
   this.pizzaSize = pizzaSize;
   this.toppings = toppings;
   this.priceArray = [];
   this.sum = 0;
 }
+
+
+//Pushes all prices to an array and then adds them together//
 
 Pizza.prototype.pizzaSum = function() {
   this.priceArray.push(this.pizzaSize.price);
@@ -48,14 +61,21 @@ Pizza.prototype.pizzaSum = function() {
     return this.sum;
 }
 
-// Pizza.prototype.total = function() {
-//   this.
-// }
 
 
 
+$(document).ready(function() {
 
+$("form#order").submit(function(event) {
+  var inputSize = eval($("input[name=size]:checked").val());
+  var inputToppings = eval($("input[name=toppings]:checked").val());
+  var newPizza = new Pizza(inputSize, [inputToppings]);
 
- // Pizza.prototype.calculation = function(){
- //   this.pizzaSize.price.
- // }
+  console.log(newPizza.priceArray);
+  console.log(newPizza.toppings);
+
+  $("#price-display").text("$" + newPizza.pizzaSum())  ;
+
+ event.preventDefault();
+  });
+});
