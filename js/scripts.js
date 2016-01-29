@@ -34,17 +34,18 @@ function Pizza(pizzaSize, toppings, priceArray, sum){
   this.pizzaSize = pizzaSize;
   this.toppings = toppings;
   this.priceArray = [];
+  this.sum = 0;
 }
 
-Pizza.prototype.sum = function() {
+Pizza.prototype.pizzaSum = function() {
   this.priceArray.push(this.pizzaSize.price);
   var that = this.priceArray
   this.toppings.forEach(function(topping) {
     that.push(topping.price);
   });
-  for (var i = 0, sum = 0;  i < this.priceArray.length; sum += this.priceArray [i++])
+  for (var i = 0;  i < this.priceArray.length; this.sum += this.priceArray [i++])
     ;
-    return sum;
+    return this.sum;
 }
 
 // Pizza.prototype.total = function() {
