@@ -58,6 +58,7 @@ Pizza.prototype.pizzaSum = function() {
   });
   for (var i = 0;  i < this.priceArray.length; this.sum += this.priceArray [i++])
     ;
+    this.sum = Math.round(this.sum * 100) / 100
     return this.sum;
 }
 
