@@ -12,16 +12,30 @@
     <title>Pizza Butt</title>
   </head>
   <body>
-    <div class="container">
 
 <!-- header -->
       <div class="header">
+        <h1>PIZZA BUTT</h1>
       </div>
 
 <!-- content       -->
+    <div class="container">
       <div id="pizza-display">
       </div>
       <div id="pizza-form">
+        <h3>ORDER YOUR PIZZA YA BUTT</h3>
+        <br>
+        <p>
+        Small pizza:  $9.99 <br>
+        Medium pizza:  $11.99 <br>
+        Large pizza:  $15.99 <br>
+        </p>
+        <p>
+        Pepperoni: $0.50 <br>
+        Anchovies: $0.75 <br>
+        Olives: $0.25 <br>
+        Pineapple: $0.25 <br>
+        </p>
         <form id="order">
           Size: <br>
           <input type="radio" name="size" value=small>Small
@@ -31,17 +45,24 @@
           <br>
 
           Toppings: <br>
-          <input type="radio" name="toppings" value=pepperoni>Pepperoni
-          <input type="radio" name="toppings" value=anchovies>Anchovies
-          <input type="radio" name="toppings" value=olives>Olives
-          <input type="radio" name="toppings" value=pineapple>Pineapple
+          <input type="checkbox" name="toppings" value=pepperoni>Pepperoni
+          <input type="checkbox" name="toppings" value=anchovies>Anchovies
+          <input type="checkbox" name="toppings" value=olives>Olives
+          <input type="checkbox" name="toppings" value=pineapple>Pineapple
           <br>
           <br>
 
-          <input type="submit" value="calculate price">
+          <input type="submit" value="add to cart">
         </form>
       </div>
-      <div id="price-display">
+      <p id="price-display">
+      </p>
+
+<!-- cart -->
+      <h3>CART</h3>
+      <div id="cart-display">
+        <ul id="cart-list">
+        </ul>
       </div>
 
 <!-- footer -->

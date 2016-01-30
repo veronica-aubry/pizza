@@ -7,14 +7,17 @@ var total = 0;
 //literal objects: pizza size and toppings//
 
 var small = {
+  name: "small",
   price: 9.99,
 }
 
 var medium = {
+  name: "medium",
   price: 11.99,
 }
 
 var large = {
+  name: "large",
   price: 15.99,
 }
 
@@ -42,9 +45,16 @@ var olives = {
 
 function Pizza(pizzaSize, toppings, priceArray, sum){
   this.pizzaSize = pizzaSize;
-  this.toppings = toppings;
+  this.toppings = [];
   this.priceArray = [];
   this.sum = 0;
+}
+
+//Order constructor//
+
+function Order(pizzas, totalCost){
+  this.pizzas = [];
+  this.totalCost = 0
 }
 
 
@@ -62,21 +72,36 @@ Pizza.prototype.pizzaSum = function() {
     return this.sum;
 }
 
-
+// Prints type and price of pizza
+Pizza.prototype.pizzaDescription = function() {
+  var toppingNames = this.toppings.map(function(topping) {
+    return topping['name'];
+      });
+    return this.pizzaSize.name + " " + "pizza with " + toppingNames;
+}
 
 
 $(document).ready(function() {
+var newOrder = new Order();
 
-$("form#order").submit(function(event) {
-  var inputSize = eval($("input[name=size]:checked").val());
-  var inputToppings = eval($("input[name=toppings]:checked").val());
-  var newPizza = new Pizza(inputSize, [inputToppings]);
+  $("form#order").submit(function(event) {
+    var inputSize = eval($("input[name=size]:checked").val());
+    var newPizza = new Pizza(inputSize);
 
-  console.log(newPizza.priceArray);
-  console.log(newPizza.toppings);
+    $("input:checkbox[name=toppings]:checked").each(function(){
+     newPizza.toppings.push(eval($(this).val()));
+      });
 
-  $("#price-display").text("$" + newPizza.pizzaSum())  ;
+      var pizzaName = ("\n" + newPizza.pizzaDescription() + " $" + newPizza.pizzaSum() + "\n")
 
- event.preventDefault();
+      $("#cart-list").append("<li>" + pizzaName + "</li>");
+
+      event.preventDefault();
+
+    // $("#price-display").click(function(event) {
+    //   newOrder.pizzas.push(pizzaName);
+    //   $("#cart-display").text(newOrder.pizzas);
+    //
+    //   });
+    });
   });
-});
